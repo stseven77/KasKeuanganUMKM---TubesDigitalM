@@ -37,7 +37,7 @@
             <div class="flex items-center space-x-3">
                 <div
                     class="w-10 h-10 rounded-xl overflow-hidden shadow-md shadow-indigo-200 dark:shadow-none bg-white flex items-center justify-center border border-indigo-100 dark:border-slate-700">
-                    <img src="rinfisunguawal.png" alt="Logo RINFIS" class="w-full h-full object-cover">
+                    <img src="assets/img/logo/rinfisunguawal.png" alt="Logo RINFIS" class="w-full h-full object-cover">
                 </div>
                 <span class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">RIN<span
                         class="text-indigo-600 dark:text-indigo-400">FIS</span></span>
@@ -920,7 +920,7 @@
                         <div class="relative">
                             <div
                                 class="w-10 h-10 rounded-xl overflow-hidden bg-indigo-600 flex items-center justify-center font-bold text-base shadow-md border border-indigo-100 dark:border-slate-700">
-                                <img src="rifakece.png" alt="Profil RIFA AI" class="w-full h-full object-cover">
+                                <img src="assets/img/ai rifa/rifakece.png" alt="Profil RIFA AI" class="w-full h-full object-cover">
                             </div>
                             <span
                                 class="absolute bottom-0 right-0 w-3 h-3 bg-emerald-500 border-2 border-white dark:border-slate-800 rounded-full"></span>
@@ -947,7 +947,7 @@
                     <div class="flex items-start space-x-3">
                         <div
                             class="w-8 h-8 rounded-lg overflow-hidden bg-indigo-600 flex-shrink-0 flex items-center justify-center text-xs font-bold shadow border border-indigo-100 dark:border-slate-700">
-                            <img src="rifakece.png" alt="Profil RIFA AI" class="w-full h-full object-cover">
+                            <img src="assets/img/ai rifa/rifakece.png" alt="Profil RIFA AI" class="w-full h-full object-cover">
                         </div>
                         <div
                             class="bg-white dark:bg-slate-800 text-slate-900 dark:text-white p-4 rounded-2xl rounded-tl-none border border-indigo-100 dark:border-slate-700 shadow-sm max-w-[85%] leading-relaxed">
@@ -1050,7 +1050,7 @@
                 <div class="flex flex-col items-center md:items-start space-y-3">
                     <div class="flex items-center space-x-3">
                         <div class="w-8 h-8 rounded-lg overflow-hidden bg-white flex items-center justify-center">
-                            <img src="rinfisunguawal.png" alt="Logo RINFIS" class="w-full h-full object-cover">
+                            <img src="assets/img/logo/rinfisunguawal.png" alt="Logo RINFIS" class="w-full h-full object-cover">
                         </div>
                         <span class="text-white font-bold tracking-tight text-lg">RINFIS</span>
                     </div>
@@ -1244,7 +1244,7 @@
 
             const avatarHTML = isUser
                 ? `<div class="w-8 h-8 rounded-lg bg-indigo-700 text-white flex-shrink-0 flex items-center justify-center text-xs font-bold shadow"><i class="fa-solid fa-user"></i></div>`
-                : `<div class="w-8 h-8 rounded-lg overflow-hidden bg-indigo-600 flex-shrink-0 flex items-center justify-center text-xs font-bold shadow border border-indigo-100 dark:border-slate-700"><img src="rifakece.png" alt="Profil RIFA AI" class="w-full h-full object-cover"></div>`;
+                : `<div class="w-8 h-8 rounded-lg overflow-hidden bg-indigo-600 flex-shrink-0 flex items-center justify-center text-xs font-bold shadow border border-indigo-100 dark:border-slate-700"><img src="assets/img/ai rifa/rifakece.png" alt="Profil RIFA AI" class="w-full h-full object-cover"></div>`;
 
             wrapperDiv.innerHTML = `
                 ${avatarHTML}
@@ -1271,7 +1271,7 @@
             typingDiv.className = 'flex items-start space-x-3';
             typingDiv.innerHTML = `
                 <div class="w-8 h-8 rounded-lg overflow-hidden bg-indigo-600 flex-shrink-0 flex items-center justify-center text-xs font-bold shadow border border-indigo-100 dark:border-slate-700">
-                    <img src="rifakece.png" alt="Profil RIFA AI" class="w-full h-full object-cover">
+                    <img src="assets/img/ai rifa/rifakece.png" alt="Profil RIFA AI" class="w-full h-full object-cover">
                 </div>
                 <div class="bg-white dark:bg-slate-800 text-slate-400 p-4 rounded-2xl rounded-tl-none border border-indigo-100 dark:border-slate-700 shadow-sm text-xs italic">
                     RIFA sedang mengetik<span class="animate-pulse">...</span>
@@ -1298,7 +1298,7 @@
             aiChatMessages.innerHTML = `
                 <div class="flex items-start space-x-3">
                     <div class="w-8 h-8 rounded-lg overflow-hidden bg-indigo-600 flex-shrink-0 flex items-center justify-center text-xs font-bold shadow border border-indigo-100 dark:border-slate-700">
-                        <img src="rifakece.png" alt="Profil RIFA AI" class="w-full h-full object-cover">
+                        <img src="assets/img/ai rifa/rifakece.png" alt="Profil RIFA AI" class="w-full h-full object-cover">
                     </div>
                     <div class="bg-white dark:bg-slate-800 text-slate-900 dark:text-white p-4 rounded-2xl rounded-tl-none border border-indigo-100 dark:border-slate-700 shadow-sm max-w-[85%] leading-relaxed">
                         Percakapan di-reset. Halo lagi! Ada yang bisa RIFA bantu seputar sistem RINFIS? ✨
@@ -1316,7 +1316,7 @@
             if (email) {
                 alertBox.classList.remove('hidden');
                 setTimeout(() => {
-                    window.location.href = 'login.html?email=' + encodeURIComponent(email);
+                    window.location.href = 'login.php?email=' + encodeURIComponent(email);
                 }, 1500);
             }
         }
