@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Kas Keuangan UMKM</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f5f3ff',
+                            100: '#ede9fe',
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
+                            700: '#6d28d9',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome untuk ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 font-sans transition-colors duration-300">
+
+    <div class="flex h-screen overflow-hidden">
+        <!-- Sidebar Admin -->
+        <aside class="hidden md:flex flex-col w-64 bg-white dark:bg-gray-800 border-r border-gray-200/80 dark:border-gray-700/80 shadow-sm">
+            <!-- Brand / Logo Header -->
+            <div class="flex items-center space-x-3.5 h-20 px-6 border-b border-gray-100 dark:border-gray-700/60 bg-gradient-to-b from-transparent to-primary-50/20 dark:to-gray-800/40">
+                <div class="w-10 h-10 rounded-xl overflow-hidden shadow-md shadow-indigo-200 dark:shadow-none bg-white flex items-center justify-center border border-indigo-100 dark:border-slate-700 flex-shrink-0">
+                    <img src="rinfisunguawal.png" alt="Logo RINFIS" class="w-full h-full object-cover">
+                </div>
+                <div class="flex flex-col justify-center">
+                    <span class="text-xl font-bold tracking-tight text-slate-900 dark:text-white leading-tight">
+                        RIN<span class="text-indigo-600 dark:text-indigo-400">FIS</span>
+                    </span>
+                    <span class="text-[10px] font-semibold text-gray-400 dark:text-gray-400 uppercase tracking-widest leading-none mt-0.5">Admin Panel</span>
+                </div>
+            </div>
+
+            <!-- Navigation Links -->
+            <nav class="flex-1 px-4 py-6 space-y-2">
+                <a href="#" class="flex items-center px-4 py-3 text-sm font-medium rounded-xl bg-primary-600 text-white shadow-md shadow-primary-500/20 transition-all"><i class="fa-solid fa-chart-line mr-3 text-base"></i> Dashboard Admin</a>
+                <a href="#" class="flex items-center px-4 py-3 text-sm font-medium rounded-xl text-gray-600 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-gray-700/60 hover:text-primary-600 transition-all"><i class="fa-solid fa-store mr-3 text-base"></i> Kelola Toko UMKM</a>
+                <a href="#" class="flex items-center px-4 py-3 text-sm font-medium rounded-xl text-gray-600 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-gray-700/60 hover:text-primary-600 transition-all"><i class="fa-solid fa-file-invoice-dollar mr-3 text-base"></i> Verifikasi Kas</a>
+                <a href="#" class="flex items-center px-4 py-3 text-sm font-medium rounded-xl text-gray-600 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-gray-700/60 hover:text-primary-600 transition-all"><i class="fa-solid fa-users mr-3 text-base"></i> Data Pengguna</a>
+                <a href="#" class="flex items-center px-4 py-3 text-sm font-medium rounded-xl text-gray-600 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-gray-700/60 hover:text-primary-600 transition-all"><i class="fa-solid fa-gear mr-3 text-base"></i> Pengaturan Sistem</a>
+            </nav>
+
+            <!-- Sidebar Footer / Logout -->
+            <div class="p-4 border-t border-gray-100 dark:border-gray-700/60">
+                <button class="w-full flex items-center justify-center px-4 py-2.5 text-sm font-medium text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-gray-700/60 rounded-xl transition-all">
+                    <i class="fa-solid fa-right-from-bracket mr-2"></i> Keluar Admin
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <div class="flex flex-col flex-1 h-full overflow-hidden">
+            <!-- Top Navbar -->
+            <header class="flex items-center justify-between h-20 px-8 bg-white/80 dark:bg-gray-800/80 backdrop-blur-md border-b border-gray-200/80 dark:border-gray-700/80 z-10">
+                <div class="flex items-center">
+                    <span class="text-lg font-semibold md:hidden text-primary-600">Admin Panel</span>
+                    <span class="hidden md:inline text-sm text-gray-500 dark:text-gray-400">Selamat datang, <strong class="text-gray-800 dark:text-gray-200 font-semibold">Super Administrator</strong> ⚡</span>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <!-- Toggle Dark/Light Mode Button -->
+                    <button id="theme-toggle" class="p-2.5 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700/60 rounded-full focus:outline-none transition-colors">
+                        <i id="theme-icon" class="fa-solid fa-sun text-lg"></i>
+                    </button>
+                    <div class="flex items-center space-x-2">
+                        <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-primary-600 to-primary-500 text-white flex items-center justify-center font-bold text-xs shadow-sm">SA</div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-50 dark:bg-gray-900 p-8">
+                <!-- Greeting & Summary Cards -->
+                <div class="mb-8">
+                    <h2 class="text-2xl font-bold text-gray-800 dark:text-white tracking-tight">Statistik Platform UMKM</h2>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Monitoring menyeluruh aktivitas kas dan toko terdaftar.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                    <!-- Card Total Toko -->
+                    <div class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700/80 hover:shadow-md transition-shadow">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Total Toko Aktif</p>
+                                <h3 class="text-2xl font-bold text-gray-800 dark:text-white mt-1">1,428</h3>
+                            </div>
+                            <div class="p-3 bg-primary-50 dark:bg-gray-700/60 text-primary-600 dark:text-primary-400 rounded-xl">
+                                <i class="fa-solid fa-store text-xl"></i>
+                            </div>
+                        </div>
+                        <span class="text-xs text-green-600 dark:text-green-400 font-semibold mt-4 inline-flex items-center"><i class="fa-solid fa-arrow-trend-up mr-1.5"></i> +42 toko baru bulan ini</span>
+                    </div>
+
+                    <!-- Card Total Perputaran Kas -->
+                    <div class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700/80 hover:shadow-md transition-shadow">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Akumulasi Kas UMKM</p>
+                                <h3 class="text-2xl font-bold text-gray-800 dark:text-white mt-1">Rp 4.2 M</h3>
+                            </div>
+                            <div class="p-3 bg-green-50 dark:bg-gray-700/60 text-green-600 dark:text-green-400 rounded-xl">
+                                <i class="fa-solid fa-wallet text-xl"></i>
+                            </div>
+                        </div>
+                        <span class="text-xs text-green-600 dark:text-green-400 font-semibold mt-4 inline-flex items-center"><i class="fa-solid fa-circle-check mr-1.5"></i> Sistem berjalan normal</span>
+                    </div>
+
+                    <!-- Card Pending Verifikasi -->
+                    <div class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700/80 hover:shadow-md transition-shadow">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Pending Verifikasi</p>
+                                <h3 class="text-2xl font-bold text-gray-800 dark:text-white mt-1">15 Toko</h3>
+                            </div>
+                            <div class="p-3 bg-amber-50 dark:bg-gray-700/60 text-amber-600 dark:text-amber-400 rounded-xl">
+                                <i class="fa-solid fa-clock-rotate-left text-xl"></i>
+                            </div>
+                        </div>
+                        <span class="text-xs text-amber-600 dark:text-amber-400 font-semibold mt-4 inline-flex items-center"><i class="fa-solid fa-triangle-exclamation mr-1.5"></i> Butuh tindakan segera</span>
+                    </div>
+
+                    <!-- Card Laporan Masalah -->
+                    <div class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700/80 hover:shadow-md transition-shadow">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Tiket Kendala</p>
+                                <h3 class="text-2xl font-bold text-gray-800 dark:text-white mt-1">2 Laporan</h3>
+                            </div>
+                            <div class="p-3 bg-red-50 dark:bg-gray-700/60 text-red-600 dark:text-red-400 rounded-xl">
+                                <i class="fa-solid fa-triangle-exclamation text-xl"></i>
+                            </div>
+                        </div>
+                        <span class="text-xs text-red-600 dark:text-red-400 font-semibold mt-4 inline-flex items-center"><i class="fa-solid fa-circle-exclamation mr-1.5"></i> Prioritas sedang</span>
+                    </div>
+                </div>
+
+                <!-- Admin Action Table: Daftar Toko Terbaru -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700/80 overflow-hidden">
+                    <div class="p-6 border-b border-gray-100 dark:border-gray-700/80 flex justify-between items-center">
+                        <h3 class="font-bold text-gray-800 dark:text-white text-base">Daftar Toko UMKM Terbaru</h3>
+                        <a href="#" class="text-sm font-semibold text-primary-600 dark:text-primary-400 hover:underline">Kelola Semua Toko</a>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-gray-50/70 dark:bg-gray-700/40 text-gray-500 dark:text-gray-400 text-xs uppercase tracking-wider font-semibold">
+                                    <th class="py-4 px-6">Nama Toko</th>
+                                    <th class="py-4 px-6">Pemilik</th>
+                                    <th class="py-4 px-6">Kategori</th>
+                                    <th class="py-4 px-6">Status Akun</th>
+                                    <th class="py-4 px-6 text-center">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-100 dark:divide-gray-700/60 text-sm">
+                                <tr class="hover:bg-gray-50/50 dark:hover:bg-gray-700/30 transition-colors">
+                                    <td class="py-4 px-6 font-semibold text-gray-800 dark:text-gray-200">Toko Berkah Jaya</td>
+                                    <td class="py-4 px-6 text-gray-600 dark:text-gray-300">Budi Santoso</td>
+                                    <td class="py-4 px-6 text-gray-500 dark:text-gray-400">Sembako & Kelontong</td>
+                                    <td class="py-4 px-6"><span class="px-3 py-1 text-xs font-semibold bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-300 rounded-full">Aktif</span></td>
+                                    <td class="py-4 px-6 text-center space-x-1">
+                                        <button class="px-3 py-1.5 bg-primary-50 dark:bg-gray-700 text-primary-600 dark:text-primary-400 hover:bg-primary-100 rounded-lg text-xs font-semibold transition-colors">Detail</button>
+                                        <button class="px-3 py-1.5 bg-red-50 dark:bg-gray-700 text-red-600 dark:text-red-400 hover:bg-red-100 rounded-lg text-xs font-semibold transition-colors">Blokir</button>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50/50 dark:hover:bg-gray-700/30 transition-colors">
+                                    <td class="py-4 px-6 font-semibold text-gray-800 dark:text-gray-200">Kopi Senja Nusantara</td>
+                                    <td class="py-4 px-6 text-gray-600 dark:text-gray-300">Siti Rahma</td>
+                                    <td class="py-4 px-6 text-gray-500 dark:text-gray-400">Kuliner & Cafe</td>
+                                    <td class="py-4 px-6"><span class="px-3 py-1 text-xs font-semibold bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-300 rounded-full">Aktif</span></td>
+                                    <td class="py-4 px-6 text-center space-x-1">
+                                        <button class="px-3 py-1.5 bg-primary-50 dark:bg-gray-700 text-primary-600 dark:text-primary-400 hover:bg-primary-100 rounded-lg text-xs font-semibold transition-colors">Detail</button>
+                                        <button class="px-3 py-1.5 bg-red-50 dark:bg-gray-700 text-red-600 dark:text-red-400 hover:bg-red-100 rounded-lg text-xs font-semibold transition-colors">Blokir</button>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50/50 dark:hover:bg-gray-700/30 transition-colors">
+                                    <td class="py-4 px-6 font-semibold text-gray-800 dark:text-gray-200">Batik Modern Solo</td>
+                                    <td class="py-4 px-6 text-gray-600 dark:text-gray-300">Joko Widodo</td>
+                                    <td class="py-4 px-6 text-gray-500 dark:text-gray-400">Fashion & Pakaian</td>
+                                    <td class="py-4 px-6"><span class="px-3 py-1 text-xs font-semibold bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 rounded-full">Pending Verifikasi</span></td>
+                                    <td class="py-4 px-6 text-center space-x-1">
+                                        <button class="px-3 py-1.5 bg-green-50 dark:bg-gray-700 text-green-600 dark:text-green-400 hover:bg-green-100 rounded-lg text-xs font-semibold transition-colors">Setujui</button>
+                                        <button class="px-3 py-1.5 bg-red-50 dark:bg-gray-700 text-red-600 dark:text-red-400 hover:bg-red-100 rounded-lg text-xs font-semibold transition-colors">Tolak</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Script untuk Toggle Dark Mode & Light Mode dengan Koreksi Ikon -->
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+
+        function updateThemeIcon(isDark) {
+            if (isDark) {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            } else {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            }
+        }
+
+        const isDarkMode = localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        
+        if (isDarkMode) {
+            document.documentElement.classList.add('dark');
+            updateThemeIcon(true);
+        } else {
+            document.documentElement.classList.remove('dark');
+            updateThemeIcon(false);
+        }
+
+        themeToggleBtn.addEventListener('click', function () {
+            document.documentElement.classList.toggle('dark');
+            
+            const currentlyDark = document.documentElement.classList.contains('dark');
+            if (currentlyDark) {
+                localStorage.theme = 'dark';
+                updateThemeIcon(true);
+            } else {
+                localStorage.theme = 'light';
+                updateThemeIcon(false);
+            }
+        });
+    </script>
+</body>
+</html>
